@@ -7,6 +7,23 @@
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      const isGitHubPages = window.location.hostname.endsWith('github.io');
+      const script = document.createElement('script');
+      script.type = 'module';
+
+      if (isGitHubPages) {
+        const base = '/lead-hunters/';
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = `${base}assets/main.css`;
+        document.head.appendChild(stylesheet);
+        script.src = `${base}assets/main.js`;
+      } else {
+        script.src = '/src/main.tsx';
+      }
+
+      document.body.appendChild(script);
+    </script>
   </body>
 </html>
