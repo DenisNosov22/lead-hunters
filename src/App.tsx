@@ -1,3 +1,5 @@
+import type { CSSProperties } from 'react';
+
 type Metric = {
   value: string;
   label: string;
@@ -12,25 +14,33 @@ type MediaCard = {
   active?: boolean;
 };
 
+const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
+
+const pageAssets = {
+  '--bg-overlay-a': `url("${asset('bg-overlay-a.png')}")`,
+  '--bg-overlay-b': `url("${asset('bg-overlay-b.png')}")`,
+  '--bg-texture': `url("${asset('bg-texture.png')}")`,
+} as CSSProperties & Record<string, string>;
+
 const navItems = ['Главная', 'О нас', 'Отделы', 'Вакансии', 'Контакты'];
 
 const metrics: Metric[] = [
   {
     value: '8 МЛН$',
     label: 'прибыльность\nза год',
-    image: '/assets/metric-1.png',
+    image: asset('metric-1.png'),
     tone: 'green',
   },
   {
     value: '56',
     label: 'человек в\nкоманде',
-    image: '/assets/metric-2.png',
+    image: asset('metric-2.png'),
     tone: 'white',
   },
   {
     value: '10+',
     label: 'партнеров\nуже с нами!',
-    image: '/assets/metric-3.png',
+    image: asset('metric-3.png'),
     tone: 'white',
   },
 ];
@@ -75,7 +85,7 @@ function Header() {
   return (
     <header className="header">
       <a className="header__logo" href="#" aria-label="Lead Hunters">
-        <img src="/assets/logo.png" alt="Lead Hunters" />
+        <img src={asset('logo.png')} alt="Lead Hunters" />
       </a>
       <nav className="nav" aria-label="Основная навигация">
         {navItems.map((item, index) => (
@@ -111,7 +121,7 @@ function Hero() {
         </div>
         <div className="hero__visual" aria-hidden="true">
           <div className="burst burst--green hero__burst" />
-          <img src="/assets/spiderman.png" alt="" />
+          <img src={asset('spiderman.png')} alt="" />
         </div>
         <div className="money" aria-hidden="true">
           $$$
@@ -163,7 +173,7 @@ function VideoSection() {
           <div className="burst burst--blue burst--large" />
         </div>
         <button className="video-card" type="button" aria-label="Смотреть видео">
-          <img src="/assets/video-still.png" alt="" />
+          <img src={asset('video-still.png')} alt="" />
           <span className="video-card__top" aria-hidden="true" />
           <span className="video-card__play" aria-hidden="true" />
           <span className="video-card__bottom" aria-hidden="true" />
@@ -223,7 +233,7 @@ function Media() {
 
 function App() {
   return (
-    <main className="page">
+    <main className="page" style={pageAssets}>
       <Hero />
       <Stats />
       <VideoSection />

@@ -53,9 +53,9 @@ button {
   background-color: var(--blue);
   background-image:
     linear-gradient(rgba(43, 43, 225, 0.14), rgba(43, 43, 225, 0.14)),
-    url('/assets/bg-overlay-a.png'),
-    url('/assets/bg-overlay-b.png'),
-    url('/assets/bg-texture.png');
+    var(--bg-overlay-a),
+    var(--bg-overlay-b),
+    var(--bg-texture);
   background-position: center top;
   background-repeat: no-repeat;
   background-size: 1440px 1230px, 1440px 1230px, 1440px 1230px, cover;
@@ -445,7 +445,7 @@ button {
   background-color: var(--acid);
   background-image:
     linear-gradient(rgba(173, 254, 0, 0.75), rgba(173, 254, 0, 0.75)),
-    url('/assets/bg-texture.png');
+    var(--bg-texture);
   background-size: cover;
   background-position: center;
 }
