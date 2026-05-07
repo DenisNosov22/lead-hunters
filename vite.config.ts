@@ -14,7 +14,10 @@ export default defineConfig({
   base: getBasePath(),
   build: {
     rollupOptions: {
-      input: 'src/main.tsx',
+      input: {
+        index: 'index.html',
+        main: 'src/main.tsx',
+      },
       output: {
         entryFileNames: 'assets/[name].js',
         chunkFileNames: 'assets/[name].js',
